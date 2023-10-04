@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bitcoin Agora</title>
+</head>
+
+<body>
+  <p id="price-message">Aguardando dados...</p>
+
+  <script>
+    const ws = new WebSocket('ws://localhost:3000')
+    ws.addEventListener('message', (e) => {
+      const formatter = new Intl.NumberFormat('pt-BR', {
+        style: 'currency',
+        currency: 'brl'
+      })
+      const priceStr = formatter.format(e.data)
+      const currentTime = new Date().toLocaleTimeString()
+      const priceMessage = document.getElementById('price-message')
+      priceMessage.innerText = `Preço do bitcoin em ${currentTime}: ${priceStr}`
+    })
+  </script>
+</body>
+
+</html>
