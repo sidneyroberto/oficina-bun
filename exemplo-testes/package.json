@@ -1,0 +1,14 @@
+{
+  "name": "exemplo-testes",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "test": "bun test --watch --coverage"
+  },
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
